@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MyShop.CORE;
+using MyShop.CORE.Domain;
 using MyShop.Web.Models;
 
 namespace MyShop.Web.Controllers

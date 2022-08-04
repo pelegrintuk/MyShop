@@ -8,6 +8,7 @@ using Owin;
 using MyShop.Web.Models;
 using MyShop.CORE;
 using MyShop.DAL;
+using MyShop.CORE.Domain;
 
 namespace MyShop.Web
 {

@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using MyShop.CORE;
+using MyShop.CORE.Domain;
 using MyShop.DAL;
 using MyShop.Web.Models;
 

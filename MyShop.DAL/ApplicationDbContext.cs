@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using MyShop.CORE;
+using MyShop.CORE.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
