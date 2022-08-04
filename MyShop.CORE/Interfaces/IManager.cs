@@ -9,7 +9,7 @@ namespace MyShop.CORE.Interfaces
     /// <summary>
     /// Interfaz del manager
     /// </summary>
-    interface IManager<T>
+    public interface IManager<T>
     {
         /// <summary>
         /// Contexto de datos

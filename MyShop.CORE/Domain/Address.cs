@@ -10,7 +10,7 @@ namespace MyShop.CORE.Domain
     /// <summary>
     /// Clase de dirección.
     /// </summary>
-    class Address
+    public class Address
     {
         /// <summary>
         /// Identificador

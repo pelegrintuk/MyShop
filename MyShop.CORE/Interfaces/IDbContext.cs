@@ -12,7 +12,7 @@ namespace MyShop.CORE.Interfaces
     /// <summary>
     /// Interfaz del contexto de datos
     /// </summary>
-    interface IDbContext
+    public interface IDbContext
     {
         /// <summary>
         /// Colección de pedidos

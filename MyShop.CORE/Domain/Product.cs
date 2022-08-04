@@ -9,7 +9,7 @@ namespace MyShop.CORE.Domain
     /// <summary>
     /// Clase de productos
     /// </summary>
-    class Product
+    public class Product
     {
         /// <summary>
         /// Identificador

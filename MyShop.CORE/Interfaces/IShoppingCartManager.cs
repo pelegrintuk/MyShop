@@ -10,7 +10,7 @@ namespace MyShop.CORE.Interfaces
     /// <summary>
     /// Manager del carrito de la compra
     /// </summary>
-    interface IShoppingCartManager:IManager<ShoppingCart>
+    public interface IShoppingCartManager :IManager<ShoppingCart>
     {
         /// <summary>
         /// Añade producto al carrito de la compra

@@ -11,7 +11,7 @@ namespace MyShop.CORE.Interfaces
     /// <summary>
     /// Interfaz del manager de usuario
     /// </summary>
-    interface IUserManager:IDisposable
+    public interface IUserManager :IDisposable
     {
         /// <summary>
         /// Validador del usuario

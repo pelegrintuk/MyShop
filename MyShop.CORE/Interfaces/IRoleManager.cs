@@ -11,7 +11,7 @@ namespace MyShop.CORE.Interfaces
     /// <summary>
     /// Intefaz para el manager de roles
     /// </summary>
-    interface IRoleManager :IDisposable
+    public interface IRoleManager :IDisposable
     {
         /// <summary>
         /// Validador del rol de ususario

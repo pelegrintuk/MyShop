@@ -10,7 +10,7 @@ namespace MyShop.CORE.Interfaces
     /// <summary>
     /// Interfaz del manager de pedidos
     /// </summary>
-    interface IOrderManager:IManager<Order>
+    public interface IOrderManager:IManager<Order>
     {
     }
 }

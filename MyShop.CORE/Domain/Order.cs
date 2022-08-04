@@ -11,7 +11,7 @@ namespace MyShop.CORE.Domain
     /// <summary>
     /// Clase de pedidos
     /// </summary>
-    class Order
+    public class Order
     {
         /// <summary>
         /// Identificador

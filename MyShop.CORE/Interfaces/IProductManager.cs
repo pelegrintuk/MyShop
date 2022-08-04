@@ -10,7 +10,7 @@ namespace MyShop.CORE.Interfaces
     /// <summary>
     /// Interfaz del manager del producto
     /// </summary>
-    interface IProductManager:IManager<Product>
+    public interface IProductManager:IManager<Product>
     {
     }
 }

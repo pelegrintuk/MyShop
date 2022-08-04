@@ -10,7 +10,7 @@ namespace MyShop.CORE.Domain
     /// <summary>
     /// Clase para el carrito de la compra
     /// </summary>
-    class ShoppingCart
+    public class ShoppingCart
     {
         /// <summary>
         /// identificador del carrito
