@@ -21,7 +21,7 @@ namespace MyShop.CORE.Domain
         /// Identificador del usuario que creo el carrito
         /// </summary>
         [ForeignKey("User")]
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         /// <summary>
         /// Objeto del usuario
         /// </summary>

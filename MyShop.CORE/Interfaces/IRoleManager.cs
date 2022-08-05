@@ -20,7 +20,7 @@ namespace MyShop.CORE.Interfaces
         /// <summary>
         /// Devuelve los registros de los roles disponibles
         /// </summary>
-        IQueryable<IdentityRole> Roles { get; set; }
+        IQueryable<IdentityRole> Roles { get; }
         /// <summary>
         /// Crea un rol
         /// </summary>
