@@ -35,5 +35,9 @@ namespace MyShop.CORE.Domain
         /// Boleano que indica si el producto esta disponible
         /// </summary>
         public bool Avaliable { get; set; }
+        /// <summary>
+        /// Ruta a la iamgen
+        /// </summary>
+        public string Image { get; set; }
     }
 }
