@@ -1,4 +1,5 @@
 ﻿using MyShop.Application;
+using MyShop.CORE.Domain;
 using MyShop.CORE.Interfaces;
 using MyShop.DAL;
 using MyShop.Web.Models;
@@ -22,20 +23,42 @@ namespace MyShop.Web.Controllers
         //GET: Product
         public ActionResult Index()
         {
-            //TODO: Resolver esto
-            //if (productManager.GetAll().Count)
+            var model = new ProductViewModel();
+
+            try
             {
-                var model = productManager.GetAll().Select(e => new ProductList
+                var products = productManager.GetAll().Select(e => new ProductList
                 {
                     Id = e.Id,
                     Name = e.Name,
                     Image = e.Image,
                     Price = e.Price
-                });
-                return View(model);
+                }).ToList();
+                model.Products = products;
+                model.ProductCount = products.Count;
             }
-            return View();
+            catch
+            {
+                throw new Exception("No existen productos.");
+            }
+            return View(model);
         }
+        //public ActionResult Index()
+        //{
+        //    //TODO: Resolver esto
+        //    //if (productManager.GetAll().Count)
+        //    {
+        //        var model = productManager.GetAll().Select(e => new ProductList
+        //        {
+        //            Id = e.Id,
+        //            Name = e.Name,
+        //            Image = e.Image,
+        //            Price = e.Price
+        //        });
+        //        return View(model);
+        //    }
+        //    return View();
+        //}
 
         // GET: Product/Details/5
         public ActionResult Details(int id)
@@ -51,17 +74,27 @@ namespace MyShop.Web.Controllers
 
         // POST: Product/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Product model)
         {
             try
             {
-                // TODO: Add insert logic here
+                Product product = new Product
+                {
+                    Name = model.Name,
+                    Description = model.Description,
+                    Price = model.Price,
+                    Stock = model.Stock,
+                    Avaliable = model.Avaliable,
+                    Image = model.Image
+                };
+                productManager.Add(product);
+                productManager.Context.SaveChanges();
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                throw ex;
             }
         }
 
