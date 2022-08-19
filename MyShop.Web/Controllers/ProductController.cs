@@ -74,7 +74,7 @@ namespace MyShop.Web.Controllers
 
         // POST: Product/Create
         [HttpPost]
-        public ActionResult Create(Product model)
+        public ActionResult Create(ProductCreate model)
         {
             try
             {
