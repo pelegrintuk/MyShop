@@ -37,9 +37,9 @@ namespace MyShop.Web.Controllers
                 model.Products = products;
                 model.ProductCount = products.Count;
             }
-            catch
+            catch (Exception ex)
             {
-                throw new Exception("No existen productos.");
+                throw ex;
             }
             return View(model);
         }

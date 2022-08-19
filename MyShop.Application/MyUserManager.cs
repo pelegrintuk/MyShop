@@ -13,13 +13,13 @@ namespace MyShop.Application
     /// <summary>
     /// Manager de usuario
     /// </summary>
-    public class UserManager : Microsoft.AspNet.Identity.UserManager<ApplicationUser>, IUserManager
+    public class MyUserManager : Microsoft.AspNet.Identity.UserManager<ApplicationUser>, IUserManager
     {
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="context">Contexto de datos</param>
-        public UserManager(IDbContext context):base(new UserStore<ApplicationUser>((DbContext)context))
+        public MyUserManager(IDbContext context):base(new UserStore<ApplicationUser>((DbContext)context))
         {
 
         }

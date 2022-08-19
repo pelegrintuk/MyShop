@@ -7,10 +7,9 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using MyShop.CORE;
-using MyShop.CORE.Domain;
+using Microsoft.Owin.Security;using MyShop.CORE.Domain;
 using MyShop.Web.Models;
+using MyShop.Application;
 
 namespace MyShop.Web.Controllers
 {
@@ -24,7 +23,7 @@ namespace MyShop.Web.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -153,8 +152,10 @@ namespace MyShop.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
+                var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, name=model.Name, Surname=model.Surname, NIF=model.NIF};
+                UserManager.Create(user, model.Password);
+                IdentityResult result = null;
+                result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);

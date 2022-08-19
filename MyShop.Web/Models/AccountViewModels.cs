@@ -79,6 +79,19 @@ namespace MyShop.Web.Models
         [Display(Name = "Confirmar contraseña")]
         [Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmación no coinciden.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [StringLength(10, ErrorMessage = "Formato incorrecto.", MinimumLength = 7)]
+        [Display(Name = "NIF")]
+        public string NIF { get; set; }
+
+        [Required]
+        [Display(Name = "Nombre")]
+        public string Name { get; set; }
+
+        [Required]
+        [Display(Name = "Apellidos")]
+        public string Surname { get; set; }
     }
 
     public class ResetPasswordViewModel
