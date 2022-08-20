@@ -11,12 +11,20 @@ namespace MyShop.Web.Models
     public class ProductViewModel
     {
         /// <summary>
-        /// Colección de productos
+        /// Identificador del producto
         /// </summary>
-        public IEnumerable<ProductList> Products { get; set; }
+        public int Id { get; set; }
         /// <summary>
-        /// Numero de productos a mostrar
+        /// Nombre del producto
         /// </summary>
-        public int ProductCount { get; set; }
+        public string Name { get; set; }
+        /// <summary>
+        /// Ruta a la imagen del producto
+        /// </summary>
+        public string Image { get; set; }
+        /// <summary>
+        /// Precio del producto
+        /// </summary>
+        public decimal Price { get; set; }
     }
 }

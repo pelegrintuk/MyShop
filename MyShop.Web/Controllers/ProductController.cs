@@ -13,52 +13,21 @@ namespace MyShop.Web.Controllers
 {
     public class ProductController : Controller
     {
-        ApplicationDbContext context = null;
-        ProductManager productManager = null;
+        IProductManager productManager;
         public ProductController()
         {
-            context = new ApplicationDbContext();
-            productManager = new ProductManager(context);
+
+        }
+        public ProductController(IProductManager productManager)
+        {
+            this.productManager = productManager;
         }
         //GET: Product
         public ActionResult Index()
         {
-            var model = new ProductViewModel();
-
-            try
-            {
-                var products = productManager.GetAll().Select(e => new ProductList
-                {
-                    Id = e.Id,
-                    Name = e.Name,
-                    Image = e.Image,
-                    Price = e.Price
-                }).ToList();
-                model.Products = products;
-                model.ProductCount = products.Count;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            var model = productManager.GetAll();
             return View(model);
         }
-        //public ActionResult Index()
-        //{
-        //    //TODO: Resolver esto
-        //    //if (productManager.GetAll().Count)
-        //    {
-        //        var model = productManager.GetAll().Select(e => new ProductList
-        //        {
-        //            Id = e.Id,
-        //            Name = e.Name,
-        //            Image = e.Image,
-        //            Price = e.Price
-        //        });
-        //        return View(model);
-        //    }
-        //    return View();
-        //}
 
         // GET: Product/Details/5
         public ActionResult Details(int id)

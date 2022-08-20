@@ -1,7 +1,4 @@
-﻿using MyShop.Application;
-using MyShop.CORE.Interfaces;
-using MyShop.Web.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,54 +6,27 @@ using System.Web.Mvc;
 
 namespace MyShop.Web.Controllers
 {
-    public class ShopController : Controller
+    public class OrderController : Controller
     {
-        ProductManager productManager;
-        ShoppingCartManager shopingCartManager;
-        public ShopController()
-        {
-
-        }
-        public ShopController(ProductManager productManager, ShoppingCartManager shopingCartManager)
-        {
-            this.productManager = productManager;
-            this.shopingCartManager = shopingCartManager;
-        }
-        // GET: Shop
+        // GET: Order
         public ActionResult Index()
         {
-            ListViewModel model = new ListViewModel();           
-            try
-            {
-                var products = productManager.GetAll().Select(e => new ProductViewModel
-                {
-                    Id = e.Id,
-                    Name = e.Name,
-                    Image = e.Image,
-                    Price = e.Price
-                }).ToList();
-                model.Products = (IQueryable<ProductViewModel>)products;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return View(model);
+            return View();
         }
 
-        // GET: Shop/Details/5
+        // GET: Order/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Shop/Create
+        // GET: Order/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Shop/Create
+        // POST: Order/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -72,13 +42,13 @@ namespace MyShop.Web.Controllers
             }
         }
 
-        // GET: Shop/Edit/5
+        // GET: Order/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Shop/Edit/5
+        // POST: Order/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -94,13 +64,13 @@ namespace MyShop.Web.Controllers
             }
         }
 
-        // GET: Shop/Delete/5
+        // GET: Order/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Shop/Delete/5
+        // POST: Order/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
