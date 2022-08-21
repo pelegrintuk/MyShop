@@ -1,5 +1,4 @@
-﻿using MyShop.Application;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,40 +6,27 @@ using System.Web.Mvc;
 
 namespace MyShop.Web.Controllers
 {
-    public class OrderController : Controller
+    public class CartController : Controller
     {
-        OrderManager orderManager = null;
-        public OrderController(OrderManager orderManager)
-        {
-            this.orderManager = orderManager;
-        }
-        // GET: Order
+        // GET: Cart
         public ActionResult Index()
-            //TODO: Me falla el GetUserId
         {
-            //var result = User.Identity.GetUserId()//orderManager.GetById/*GetByUserId*/.(User.Identity.GetUserId()).Select(e => new IncidenceList
-            //{
-            //    Id = e.Id,
-            //    Date = e.CreatedDate,
-            //    Message = e.Messages.FirstOrDefault().Text,
-            //    Status = e.Status.ToString()
-            //});
             return View();
         }
 
-        // GET: Order/Details/5
+        // GET: Cart/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Order/Create
+        // GET: Cart/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Order/Create
+        // POST: Cart/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -56,13 +42,13 @@ namespace MyShop.Web.Controllers
             }
         }
 
-        // GET: Order/Edit/5
+        // GET: Cart/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Order/Edit/5
+        // POST: Cart/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -78,13 +64,13 @@ namespace MyShop.Web.Controllers
             }
         }
 
-        // GET: Order/Delete/5
+        // GET: Cart/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Order/Delete/5
+        // POST: Cart/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

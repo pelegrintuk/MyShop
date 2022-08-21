@@ -13,12 +13,12 @@ namespace MyShop.Web.Controllers
 {
     public class ProductController : Controller
     {
-        IProductManager productManager;
+        ProductManager productManager;
         public ProductController()
         {
 
         }
-        public ProductController(IProductManager productManager)
+        public ProductController(ProductManager productManager)
         {
             this.productManager = productManager;
         }
@@ -32,7 +32,29 @@ namespace MyShop.Web.Controllers
         // GET: Product/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            try
+            {
+                Models.ProductCreate model = null;
+                var product = productManager.GetById(id);
+                if (product != null)
+                {
+                    model = new Models.ProductCreate
+                    {
+                        Name = model.Name,
+                        Description = model.Description,
+                        Price = model.Price,
+                        Stock = model.Stock,
+                        Avaliable = model.Avaliable,
+                        Image = model.Image
+                    };
+                    return View(model);
+                }
+                return RedirectToAction("Index", "Shop");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         // GET: Product/Create
@@ -70,21 +92,53 @@ namespace MyShop.Web.Controllers
         // GET: Product/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            try
+            {
+                Models.ProductCreate model = null;
+                var product = productManager.GetById(id);
+                if (product != null)
+                {
+                    model = new Models.ProductCreate
+                    {
+                        Name = model.Name,
+                        Description = model.Description,
+                        Price = model.Price,
+                        Stock = model.Stock,
+                        Avaliable = model.Avaliable,
+                        Image = model.Image
+                    };
+                    return View(model);
+                }
+                return RedirectToAction("Index", "Shop");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         // POST: Product/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, ProductCreate model)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                var product = productManager.GetById(id);
+                if (product != null)
+                {
+                    product.Name = model.Name;
+                    product.Description = model.Description;
+                    product.Price = model.Price;
+                    product.Stock = model.Stock;
+                    product.Avaliable = model.Avaliable;
+                    product.Image = model.Image;
+                    productManager.Context.SaveChanges();
+                }
+                return RedirectToAction("Index", "Shop");
             }
             catch
             {
+                ModelState.AddModelError("", "Se ha producido un error al editar el producto.");
                 return View();
             }
         }
@@ -92,21 +146,48 @@ namespace MyShop.Web.Controllers
         // GET: Product/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            try
+            {
+                Models.ProductCreate model = null;
+                var product = productManager.GetById(id);
+                if (product != null)
+                {
+                    model = new Models.ProductCreate
+                    {
+                        Name = model.Name,
+                        Description = model.Description,
+                        Price = model.Price,
+                        Stock = model.Stock,
+                        Avaliable = model.Avaliable,
+                        Image = model.Image
+                    };
+                    return View(model);
+                }
+                return RedirectToAction("Index", "Shop");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         // POST: Product/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, ProductCreate model)
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                var product = productManager.GetById(id);
+                if (product != null)
+                {
+                    productManager.Remove(product);
+                    productManager.Context.SaveChanges();
+                }
+                return RedirectToAction("Index", "Shop");
             }
             catch
             {
+                ModelState.AddModelError("", "Se ha producido un error al eliminar el producto.");
                 return View();
             }
         }

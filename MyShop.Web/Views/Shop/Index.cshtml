@@ -1,3 +1,13 @@
 ﻿@model MyShop.Web.Models.ListViewModel
 
-@Html.Partial("Products", Model.Products)
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Catalogo de productos</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create", "Product")
+</p>
+
+@Html.Partial("ProductList", Model.Products)
