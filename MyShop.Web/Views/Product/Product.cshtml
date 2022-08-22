@@ -1,0 +1,15 @@
+﻿@model MyShop.Web.Models.ProductViewModel
+
+<div class="card" style="width:18rem;margin-top:50px">
+    <img class="card-img-top Image_@Model.Id" src="@Model.Image" alt="Product Image" />
+    <div class="card-body">
+        <h5 class="card-title text-center"><b>@Model.Name</b></h5>
+        <p class="card-text text-center alert alert-success">@string.Format("{0:C}", Model.Price)</p>
+        <div class="text-center">
+            <a href="#" data-id="@Model.Id" class="btn btn-primary add-to-cart">Añadir</a>
+            <a href="@Url.Action("Details", "Product", new { id=Model.Id })" class="btn btn-default">Detalles</a>
+            <a href="@Url.Action("Edit", "Product", new { id=Model.Id })" class="btn btn-default">Editar</a>
+        </div>
+    </div>
+</div>
+

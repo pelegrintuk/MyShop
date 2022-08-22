@@ -3,7 +3,9 @@
     <div class="col-md-12">
         @foreach (var product in Model)
         {
-            @Html.Partial("Product", product)
+            <div class="col-lg-4 col-sm-6 col-md-4">
+                @Html.Partial("Product", product)
+            </div>
         }
     </div>
 </div>

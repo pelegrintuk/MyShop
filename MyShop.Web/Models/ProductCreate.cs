@@ -8,6 +8,10 @@ namespace MyShop.Web.Models
     public class ProductCreate
     {
         /// <summary>
+        /// Identificador del producto
+        /// </summary>
+        public int Id { get; set; }
+        /// <summary>
         /// Nombre del producto
         /// </summary>
         public string Name { get; set; }

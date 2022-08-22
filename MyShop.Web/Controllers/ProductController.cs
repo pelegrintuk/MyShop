@@ -14,21 +14,42 @@ namespace MyShop.Web.Controllers
     public class ProductController : Controller
     {
         ProductManager productManager;
+        ShoppingCartManager shopingCartManager;
         ApplicationDbContext context;
         public ProductController()
         {
-            this.context = new ApplicationDbContext();
-            this.productManager = new ProductManager(context);
+            context = new ApplicationDbContext();
+            productManager = new ProductManager(context);
+            shopingCartManager = new ShoppingCartManager(context);
         }
         //public ProductController(ProductManager productManager)
         //{
         //    this.productManager = productManager;
         //}
         //GET: Product
+        //public ActionResult Index()
+        //{
+        //    var model = productManager.GetAll();
+        //    return View(model);0 
+        //}
         public ActionResult Index()
         {
-            var model = productManager.GetAll();
-            return View(model);
+            ListViewModel model = new ListViewModel();
+            try
+            {
+                model.Products = productManager.GetAll().Select(e => new ProductViewModel
+                {
+                    Id = e.Id,
+                    Name = e.Name,
+                    Image = e.Image,
+                    Price = e.Price
+                });
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         // GET: Product/Details/5
@@ -102,12 +123,12 @@ namespace MyShop.Web.Controllers
                 {
                     model = new Models.ProductCreate
                     {
-                        Name = model.Name,
-                        Description = model.Description,
-                        Price = model.Price,
-                        Stock = model.Stock,
-                        Avaliable = model.Avaliable,
-                        Image = model.Image
+                        Name = product.Name,
+                        Description = product.Description,
+                        Price = product.Price,
+                        Stock = product.Stock,
+                        Avaliable = product.Avaliable,
+                        Image = product.Image
                     };
                     return View(model);
                 }
