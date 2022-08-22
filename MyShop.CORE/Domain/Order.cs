@@ -16,7 +16,7 @@ namespace MyShop.CORE.Domain
         /// <summary>
         /// Identificador
         /// </summary>
-        public int ID { get; set; }
+        public int Id { get; set; }
         /// <summary>
         /// Estado
         /// </summary>
@@ -29,19 +29,19 @@ namespace MyShop.CORE.Domain
         /// <summary>
         /// Fecha de pago
         /// </summary>
-        public DateTime PaymentDate { get; set; }
+        public DateTime? PaymentDate { get; set; }
         /// <summary>
         /// Fecha de envio
         /// </summary>
-        public DateTime SendDate { get; set; }
+        public DateTime? SendDate { get; set; }
         /// <summary>
         /// Fecha de recepción
         /// </summary>
-        public DateTime DeliveryDate { get; set; }
+        public DateTime? DeliveryDate { get; set; }
         /// <summary>
         /// Fecha de cancelación
         /// </summary>
-        public DateTime CancellationDate { get; set; }
+        public DateTime? CancellationDate { get; set; }
         /// <summary>
         /// Numero de tarjeta de credito para el pago
         /// </summary>

@@ -54,6 +54,9 @@ namespace MyShop.DAL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Order>().HasRequired(f => f.DeliveryAddress).WithMany().WillCascadeOnDelete(false);
+            //modelBuilder.Entity<ApplicationUser>()
+            //    .HasOptional(s => s.Address) // Mark Address property optional in Student entity
+            //    .WithRequired(ad => ad.User); 
             base.OnModelCreating(modelBuilder);
         }
         /// <summary>

@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
@@ -33,15 +34,19 @@ namespace MyShop.CORE.Domain
         /// Nombre del usuario
         /// </summary>
         [Required]
-        public string name { get; set; }
+        public string Name { get; set; }
         /// <summary>
         /// Apellidos del usuario
         /// </summary>
         [Required]
         public string Surname { get; set; }
+        // [ForeignKey ("Address")]
+        // public int AddressId { get; set; }
         /// <summary>
         /// Dirección del usuario
         /// </summary>
-        private Address Address { get; set; }
+        public ICollection<Address> Address { get; set; }
+
+
     }
 }

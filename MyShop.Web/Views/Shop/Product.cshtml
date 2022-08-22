@@ -11,7 +11,7 @@
         @Html.ValueFor(model => model.Price)
     </div>
     <div class="row">
-        @Html.ActionLink("Ver", "Details", "Product")
+        @Html.ActionLink("Ver", "Details", "Product", Model.Id)
     </div>
 </div>
 

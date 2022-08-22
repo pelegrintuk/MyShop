@@ -42,6 +42,9 @@ namespace MyShop.Web
                 user = new ApplicationUser();
                 user.UserName = "admin@admin.com";
                 user.Email = "admin@admin.com";
+                user.Name = "David";
+                user.Surname = "Diz";
+                user.NIF = "77127132J";
                 IdentityResult result = userManager.Create(user, "123Asd@");
                 if (result.Succeeded)
                 {

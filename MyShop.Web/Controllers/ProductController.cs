@@ -14,14 +14,16 @@ namespace MyShop.Web.Controllers
     public class ProductController : Controller
     {
         ProductManager productManager;
+        ApplicationDbContext context;
         public ProductController()
         {
-
+            this.context = new ApplicationDbContext();
+            this.productManager = new ProductManager(context);
         }
-        public ProductController(ProductManager productManager)
-        {
-            this.productManager = productManager;
-        }
+        //public ProductController(ProductManager productManager)
+        //{
+        //    this.productManager = productManager;
+        //}
         //GET: Product
         public ActionResult Index()
         {
@@ -40,12 +42,12 @@ namespace MyShop.Web.Controllers
                 {
                     model = new Models.ProductCreate
                     {
-                        Name = model.Name,
-                        Description = model.Description,
-                        Price = model.Price,
-                        Stock = model.Stock,
-                        Avaliable = model.Avaliable,
-                        Image = model.Image
+                        Name = product.Name,
+                        Description = product.Description,
+                        Price = product.Price,
+                        Stock = product.Stock,
+                        Avaliable = product.Avaliable,
+                        Image = product.Image
                     };
                     return View(model);
                 }
@@ -81,7 +83,7 @@ namespace MyShop.Web.Controllers
                 productManager.Add(product);
                 productManager.Context.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Shop");
             }
             catch (Exception ex)
             {

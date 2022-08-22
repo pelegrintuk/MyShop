@@ -1,5 +1,6 @@
 ﻿using MyShop.Application;
 using MyShop.CORE.Interfaces;
+using MyShop.DAL;
 using MyShop.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -13,35 +14,38 @@ namespace MyShop.Web.Controllers
     {
         ProductManager productManager;
         ShoppingCartManager shopingCartManager;
+        ApplicationDbContext context;
         public ShopController()
         {
+            context = new ApplicationDbContext();
+            productManager = new ProductManager(context);
+            shopingCartManager = new ShoppingCartManager(context);
 
         }
-        public ShopController(ProductManager productManager, ShoppingCartManager shopingCartManager)
-        {
-            this.productManager = productManager;
-            this.shopingCartManager = shopingCartManager;
-        }
+        //public ShopController(ProductManager productManager, ShoppingCartManager shopingCartManager)
+        //{
+        //    this.productManager = productManager;
+        //    this.shopingCartManager = shopingCartManager;
+        //}
         // GET: Shop
         public ActionResult Index()
         {
             ListViewModel model = new ListViewModel();           
             try
             {
-                var products = productManager.GetAll().Select(e => new ProductViewModel
+                model.Products = productManager.GetAll().Select(e => new ProductViewModel
                 {
                     Id = e.Id,
                     Name = e.Name,
                     Image = e.Image,
                     Price = e.Price
-                }).ToList();
-                model.Products = (IQueryable<ProductViewModel>)products;
+                });
+                return View(model);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            return View(model);
         }
 
         // GET: Shop/Details/5
