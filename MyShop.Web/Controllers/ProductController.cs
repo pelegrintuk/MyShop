@@ -72,7 +72,7 @@ namespace MyShop.Web.Controllers
                     };
                     return View(model);
                 }
-                return RedirectToAction("Index", "Shop");
+                return RedirectToAction("Index", "Product");
             }
             catch (Exception ex)
             {
@@ -98,13 +98,13 @@ namespace MyShop.Web.Controllers
                     Description = model.Description,
                     Price = model.Price,
                     Stock = model.Stock,
-                    Avaliable = model.Avaliable,
+                    Avaliable = 0<model.Stock,
                     Image = model.Image
                 };
                 productManager.Add(product);
                 productManager.Context.SaveChanges();
 
-                return RedirectToAction("Index", "Shop");
+                return RedirectToAction("Index", "Product");
             }
             catch (Exception ex)
             {
@@ -132,7 +132,7 @@ namespace MyShop.Web.Controllers
                     };
                     return View(model);
                 }
-                return RedirectToAction("Index", "Shop");
+                return RedirectToAction("Index", "Product");
             }
             catch (Exception ex)
             {
@@ -153,11 +153,11 @@ namespace MyShop.Web.Controllers
                     product.Description = model.Description;
                     product.Price = model.Price;
                     product.Stock = model.Stock;
-                    product.Avaliable = model.Avaliable;
+                    product.Avaliable = 0<model.Stock;
                     product.Image = model.Image;
                     productManager.Context.SaveChanges();
                 }
-                return RedirectToAction("Index", "Shop");
+                return RedirectToAction("Index", "Product");
             }
             catch
             {
@@ -177,16 +177,16 @@ namespace MyShop.Web.Controllers
                 {
                     model = new Models.ProductCreate
                     {
-                        Name = model.Name,
-                        Description = model.Description,
-                        Price = model.Price,
-                        Stock = model.Stock,
-                        Avaliable = model.Avaliable,
-                        Image = model.Image
+                        Name = product.Name,
+                        Description = product.Description,
+                        Price = product.Price,
+                        Stock = product.Stock,
+                        Avaliable = product.Avaliable,
+                        Image = product.Image
                     };
                     return View(model);
                 }
-                return RedirectToAction("Index", "Shop");
+                return RedirectToAction("Index", "Product");
             }
             catch (Exception ex)
             {
@@ -206,7 +206,7 @@ namespace MyShop.Web.Controllers
                     productManager.Remove(product);
                     productManager.Context.SaveChanges();
                 }
-                return RedirectToAction("Index", "Shop");
+                return RedirectToAction("Index", "Product");
             }
             catch
             {

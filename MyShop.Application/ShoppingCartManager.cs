@@ -22,9 +22,9 @@ namespace MyShop.Application
         {
         }
         /// <inheritdoc/>
-        public int AddProduct(string userId, string sessionId, int productId, int quantity)
+        public int AddProduct(string userId, int productId, int quantity)
         {
-            var query = GetShoppingCartByUser(userId, sessionId).Where(e => e.ProductId == productId);
+            var query = GetShoppingCartByUser(userId).Where(e => e.ProductId == productId);
             if (query.Any())
             {
                 query.Single().Quantity = query.Single().Quantity + quantity;
@@ -38,18 +38,16 @@ namespace MyShop.Application
                     ProductId = productId,
                     Quantity = quantity,
                     UserId = userId,
-                    Sesion = string.IsNullOrWhiteSpace(userId) ? sessionId : null
                 });
             }
             this.Context.SaveChanges();
-            return GetShoppingCartByUser(userId, sessionId).Sum(e => e.Quantity);
+            return GetShoppingCartByUser(userId).Sum(e => e.Quantity);
         }
+
         /// <inheritdoc/>
-        public IQueryable<ShoppingCart> GetShoppingCartByUser(string userId, string sessionId)
+        public IQueryable<ShoppingCart> GetShoppingCartByUser(string userId)
         {
-            var query = this.GetAll().Include(e => e.Product);
-            if (!string.IsNullOrWhiteSpace(userId)) query.Where(e => e.UserId == userId);
-            else query = query.Where(e => e.Sesion == sessionId);
+            var query = GetAll().Include(e => e.Product).Where(e => e.UserId == userId);
             return query;
         }
     }

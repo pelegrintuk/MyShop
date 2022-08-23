@@ -26,5 +26,9 @@ namespace MyShop.Web.Models
         /// Precio del producto
         /// </summary>
         public decimal Price { get; set; }
+        /// <summary>
+        /// Cantidad
+        /// </summary>
+        public int Quantity { get; set; }
     }
 }

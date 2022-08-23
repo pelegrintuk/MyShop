@@ -43,10 +43,6 @@ namespace MyShop.CORE.Domain
         public int Quantity { get; set; }
         #endregion
         /// <summary>
-        /// Sesion del usuario
-        /// </summary>
-        public string Sesion { get; set; }
-        /// <summary>
         /// Fecha de creación del carrito
         /// </summary>
         public DateTime Date { get; set; }
