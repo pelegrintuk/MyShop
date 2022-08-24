@@ -29,10 +29,6 @@ namespace MyShop.CORE.Domain
         /// <summary>
         /// Fecha de pago
         /// </summary>
-        public DateTime? PaymentDate { get; set; }
-        /// <summary>
-        /// Fecha de envio
-        /// </summary>
         public DateTime? SendDate { get; set; }
         /// <summary>
         /// Fecha de recepción
@@ -68,6 +64,18 @@ namespace MyShop.CORE.Domain
         /// Dirección de envio y facturación
         /// </summary>
         public Address DeliveryAddress { get; set; }
+        /// <summary>
+        /// Id de la linea de pedido
+        /// </summary>
+        public int OrderLineId { get; set; }
         #endregion
+        /// <summary>
+        /// Lineas de pedido
+        /// </summary>
+        public List<OrderLine> OrderLines { get; set; }
+        /// <summary>
+        /// Nombre del impuesto aplicado
+        /// </summary>
+        public decimal TotalPrice { get; set; }
     }
 }

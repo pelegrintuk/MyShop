@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyShop.CORE.Domain
 {
-    class OrderLine
+    public class OrderLine
     {
         /// <summary>
         /// Identificador
@@ -26,16 +26,9 @@ namespace MyShop.CORE.Domain
         public decimal ProductPrice { get; set; }
 
         /// <summary>
-        /// Nombre del impuesto aplicado
-        /// </summary>
-        public decimal TotalPrice { get; set; }
-
-        #endregion
-
-        /// <summary>
         /// Cantidad de producto
         /// </summary>
         public decimal Quantity { get; set; }
-
+        #endregion
     }
 }

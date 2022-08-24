@@ -14,13 +14,11 @@ namespace MyShop.Web.Controllers
     public class ProductController : Controller
     {
         ProductManager productManager;
-        ShoppingCartManager shopingCartManager;
         ApplicationDbContext context;
         public ProductController()
         {
             context = new ApplicationDbContext();
             productManager = new ProductManager(context);
-            shopingCartManager = new ShoppingCartManager(context);
         }
         //public ProductController(ProductManager productManager)
         //{

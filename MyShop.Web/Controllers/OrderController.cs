@@ -1,4 +1,9 @@
-﻿using MyShop.Application;
+﻿using Microsoft.AspNet.Identity;
+using MyShop.Application;
+using MyShop.CORE.Domain;
+using MyShop.CORE.Enum;
+using MyShop.DAL;
+using MyShop.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +14,14 @@ namespace MyShop.Web.Controllers
 {
     public class OrderController : Controller
     {
-        OrderManager orderManager = null;
-        public OrderController(OrderManager orderManager)
+        OrderManager orderManager;
+        ApplicationDbContext context;
+        ShoppingCartManager shoppingCartManager;
+        public OrderController()
         {
-            this.orderManager = orderManager;
+            context = new ApplicationDbContext();
+            orderManager = new OrderManager(context);
+            shoppingCartManager = new ShoppingCartManager(context);
         }
         // GET: Order
         public ActionResult Index()
@@ -35,25 +44,58 @@ namespace MyShop.Web.Controllers
         }
 
         // GET: Order/Create
-        public ActionResult Create()
+        public ActionResult Payment()
         {
             return View();
         }
 
         // POST: Order/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Payment(OrderCreate model)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                if(orderManager.CheckCreditCard(model.CardNumber))
+                {
+                    
+                }
+                else
+                {
+                    return RedirectToAction("Payment");
+                }
+                //Order order = new Order
+                //{
+                //    Status = OrderStatus.Paid,
+                //    CreateDate = DateTime.Now,
+                //    CardNumber = model.CardNumber,
+                //    UserId = User.Identity.GetUserId(),
+                //    DeliveryAddressId = null,
+                //    OrderLineId = 
+                //};
+                //OrderLine orderLine = new OrderLine();
+                //orderLine = modelCart.Products.Select(e => new ProductViewModel
+                //{
+                //    Id = e.Id,
+                //    Name = e.Name,
+                //    Image = e.Image,
+                //    Price = e.Price
+                //});
+                //foreach (var item in shoppingCartManager.GetShoppingCartByUser(User.Identity.GetUserId()))
+                //    {
+                //        orderLine.ProductName = item.Product.Name;
+                //        orderLine.ProductPrice = item.Product.Price;
+                //        orderLine.Quantity = item.Quantity;
+                //    }
+                
+                //    return View(model);
+                //}
+                //return RedirectToAction("Index", "Product");
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                throw ex;
             }
+            return View();
         }
 
         // GET: Order/Edit/5

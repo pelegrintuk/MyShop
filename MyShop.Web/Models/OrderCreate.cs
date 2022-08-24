@@ -5,15 +5,15 @@ using System.Web;
 
 namespace MyShop.Web.Models
 {
-    public class ListViewModel
+    public class OrderCreate
     {
         /// <summary>
-        /// Colección de productos
+        /// Identificador
         /// </summary>
-        public IQueryable<ProductViewModel> Products { get; set; }
+        public int Id { get; set; }
         /// <summary>
-        /// Precio total del carrito
+        /// Numero de tarjeta de credito para el pago
         /// </summary>
-        public decimal TotalPrice { get; set; }
+        public string CardNumber { get; set; }
     }
 }
