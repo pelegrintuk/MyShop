@@ -55,9 +55,9 @@ namespace MyShop.Web.Controllers
         {
             try
             {
-                if(orderManager.CheckCreditCard(model.CardNumber))
+                if (orderManager.CheckCreditCardNumber(model.CardNumber) && orderManager.CheckCreditCardDate(model.Año,model.Mes))
                 {
-                    
+                    return RedirectToAction("PaymentOK");
                 }
                 else
                 {
@@ -95,6 +95,11 @@ namespace MyShop.Web.Controllers
             {
                 throw ex;
             }
+            return View();
+        }
+
+        public ActionResult PaymentOK()
+        {
             return View();
         }
 

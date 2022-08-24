@@ -21,7 +21,7 @@ namespace MyShop.Application
         {
 
         }
-        public bool CheckCreditCard(string digits)
+        public bool CheckCreditCardNumber(string digits)
         {
             return digits.All(char.IsDigit) && digits.Reverse()
                 .Select(c => c - 48)
@@ -29,6 +29,12 @@ namespace MyShop.Application
                     ? thisNum
                     : ((thisNum *= 2) > 9 ? thisNum - 9 : thisNum)
                 ).Sum() % 10 == 0;
+        }
+        public bool CheckCreditCardDate(int año, int mes)
+        {
+            if (año > DateTime.Today.Year) return true;
+            else if (año == DateTime.Today.Year && mes >= DateTime.Today.Month) return true;
+            else return false;
         }
     }
 }

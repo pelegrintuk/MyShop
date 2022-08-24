@@ -38,10 +38,6 @@ namespace MyShop.CORE.Domain
         /// Fecha de cancelación
         /// </summary>
         public DateTime? CancellationDate { get; set; }
-        /// <summary>
-        /// Numero de tarjeta de credito para el pago
-        /// </summary>
-        public string CardNumber { get; set; }
         #endregion
         #region Relaciones con el usuario
         /// <summary>
@@ -77,5 +73,9 @@ namespace MyShop.CORE.Domain
         /// Nombre del impuesto aplicado
         /// </summary>
         public decimal TotalPrice { get; set; }
+        /// <summary>
+        /// Numero de tarjeta de credito para el pago
+        /// </summary>
+        public string CardNumber { get; set; }
     }
 }

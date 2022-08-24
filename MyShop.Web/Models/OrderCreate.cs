@@ -15,5 +15,13 @@ namespace MyShop.Web.Models
         /// Numero de tarjeta de credito para el pago
         /// </summary>
         public string CardNumber { get; set; }
+        /// <summary>
+        /// Mes de caducidad de la tarjeta de credito
+        /// </summary>
+        public int Mes { get; set; }
+        /// <summary>
+        /// Año de caducidad de la tarjeta de credito
+        /// </summary>
+        public int Año { get; set; }
     }
 }
