@@ -50,21 +50,10 @@ namespace MyShop.CORE.Domain
         /// </summary>
         public ApplicationUser User { get; set; }
         #endregion
-        #region Relaciones con la dirección
-        /// <summary>
-        /// Identificador de la dirección
-        /// </summary>
-        [ForeignKey("DeliveryAddress")]
-        public int DeliveryAddressId { get; set; }
-        /// <summary>
-        /// Dirección de envio y facturación
-        /// </summary>
-        public Address DeliveryAddress { get; set; }
         /// <summary>
         /// Id de la linea de pedido
         /// </summary>
         public int OrderLineId { get; set; }
-        #endregion
         /// <summary>
         /// Lineas de pedido
         /// </summary>

@@ -57,6 +57,15 @@ namespace MyShop.Web.Controllers
             {
                 if (orderManager.CheckCreditCardNumber(model.CardNumber) && orderManager.CheckCreditCardDate(model.Año,model.Mes))
                 {
+                    Order order = new Order
+                    {
+                        Status = OrderStatus.Paid,
+                        CreateDate = DateTime.Now,
+                        CardNumber = model.CardNumber,
+                        UserId = User.Identity.GetUserId(),
+                    };
+                    orderManager.Add(order);
+                    orderManager.Context.SaveChanges();
                     return RedirectToAction("PaymentOK");
                 }
                 else

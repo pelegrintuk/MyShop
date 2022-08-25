@@ -45,8 +45,28 @@ namespace MyShop.CORE.Domain
         /// <summary>
         /// Dirección del usuario
         /// </summary>
-        public ICollection<Address> Address { get; set; }
-
-
+        #region Dirección
+        public string AddressText1 { get; set; }
+        /// <summary>
+        /// Texto para segunda linea de dirección
+        /// </summary>
+        public string AddressText2 { get; set; }
+        /// <summary>
+        /// Código postal
+        /// </summary>
+        public string PostalCode { get; set; }
+        /// <summary>
+        /// Ciudad
+        /// </summary>
+        public string City { get; set; }
+        /// <summary>
+        /// Provincia
+        /// </summary>
+        public string Province { get; set; }
+        /// <summary>
+        /// Pais
+        /// </summary>
+        public string Country { get; set; }
+        #endregion
     }
 }

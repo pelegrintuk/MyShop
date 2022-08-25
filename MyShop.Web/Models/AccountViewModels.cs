@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using MyShop.CORE.Domain;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace MyShop.Web.Models
@@ -92,6 +93,42 @@ namespace MyShop.Web.Models
         [Required]
         [Display(Name = "Apellidos")]
         public string Surname { get; set; }
+
+        /// <summary>
+        /// Texto para primera linea de dirección
+        /// </summary>
+        [Required]
+        [Display(Name = "Dirección 1")]
+        public string AddressText1 { get; set; }
+        /// <summary>
+        /// Texto para segunda linea de dirección
+        /// </summary>
+        [Display(Name = "Dirección 2")]
+        public string AddressText2 { get; set; }
+        /// <summary>
+        /// Código postal
+        /// </summary>
+        [Required]
+        [Display(Name = "Codigo postal")]
+        public string PostalCode { get; set; }
+        /// <summary>
+        /// Ciudad
+        /// </summary>
+        [Required]
+        [Display(Name = "Ciudad")]
+        public string City { get; set; }
+        /// <summary>
+        /// Provincia
+        /// </summary>
+        [Required]
+        [Display(Name = "Provincia")]
+        public string Province { get; set; }
+        /// <summary>
+        /// Pais
+        /// </summary>
+        [Required]
+        [Display(Name = "Pais")]
+        public string Country { get; set; }
     }
 
     public class ResetPasswordViewModel

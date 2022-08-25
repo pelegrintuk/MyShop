@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using MyShop.Application;
 using MyShop.CORE.Domain;
 using MyShop.Web.Models;
 
@@ -150,18 +151,39 @@ namespace MyShop.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
             if (ModelState.IsValid)
             {
                 //var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, name=model.Name, Surname=model.Surname, NIF=model.NIF};
                 //UserManager.Create(user, model.Password);
                 //IdentityResult result = null;
                 //result = await UserManager.CreateAsync(user, model.Password);
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser 
+                { 
+                    UserName = model.Email, 
+                    Email = model.Email, 
+                    Name = model.Name, 
+                    Surname = model.Surname, 
+                    NIF = model.NIF,
+                    AddressText1 = model.AddressText1,
+                    AddressText2 = model.AddressText2,
+                    City = model.City,
+                    Country = model.Country,
+                    PostalCode = model.PostalCode,
+                    Province = model.Province
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
                     // Para obtener más información sobre cómo habilitar la confirmación de cuentas y el restablecimiento de contraseña, visite https://go.microsoft.com/fwlink/?LinkID=320771
                     // Enviar correo electrónico con este vínculo
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
