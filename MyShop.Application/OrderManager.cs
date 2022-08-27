@@ -1,5 +1,7 @@
 ﻿using MyShop.CORE.Domain;
+using MyShop.CORE.Enum;
 using MyShop.CORE.Interfaces;
+using MyShop.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +37,11 @@ namespace MyShop.Application
             if (año > DateTime.Today.Year) return true;
             else if (año == DateTime.Today.Year && mes >= DateTime.Today.Month) return true;
             else return false;
+        }
+        public string GetStatus(OrderStatus status)
+        {
+            string Valor = Enum.GetName(typeof(OrderStatus), status);
+            return Valor;
         }
     }
 }

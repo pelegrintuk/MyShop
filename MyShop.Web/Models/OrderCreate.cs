@@ -6,6 +6,9 @@ using System.Web;
 
 namespace MyShop.Web.Models
 {
+    /// <summary>
+    /// View model para los pedidos
+    /// </summary>
     public class OrderCreate
     {
         /// <summary>
@@ -30,5 +33,9 @@ namespace MyShop.Web.Models
         [Required]
         [Display(Name = "Año de caducidad")]
         public int Año { get; set; }
+        /// <summary>
+        /// Lista de lineas de pedido
+        /// </summary>
+        public IQueryable<OrderLineViewModel> OrderLines { get; set; }
     }
 }
